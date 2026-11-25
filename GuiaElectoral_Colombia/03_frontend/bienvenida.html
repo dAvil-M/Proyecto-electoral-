@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía Electoral de Colombia</title>
+  <link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+  <!-- Marca de datos de ejemplo banner superior prominente y colorido -->
+  <p class="marca-datos-banner">Datos de ejemplo - no oficiales</p>
+
+  <!-- Datos JSON para app.js (disponible para navegación entre pantallas) -->
+  <div id="datos-json" style="display: none;">
+    {
+      "marca": "Datos de ejemplo - no oficiales",
+      "version": "1.0.0",
+      "ultimaActualizacion": "2024-11",
+      "periodos": [
+        { "id": "periodo-1", "nombre": "2020-2023 (Activo)", "activo": true },
+        { "id": "periodo-2", "nombre": "2024-2027 (Activo)", "activo": true },
+        { "id": "periodo-3", "nombre": "2028-2031", "activo": false },
+        { "id": "periodo-4", "nombre": "2032-2035", "activo": false }
+      ],
+      "departamentos": [
+        { "id": "amazonas", "nombre": "Amazonas" },
+        { "id": "antioquia", "nombre": "Antioquia" },
+        { "id": "bolivar", "nombre": "Bolivar" },
+        { "id": "cundinamarca", "nombre": "Cundinamarca" },
+        { "id": "valle", "nombre": "Valle del Cauca" },
+        { "id": "norte-de-santander", "nombre": "Norte de Santander" },
+        { "id": "sucre", "nombre": "Sucre" },
+        { "id": "cordoba", "nombre": "Córdoba" },
+        { "id": "meta", "nombre": "Meta" },
+        { "id": "tolima", "nombre": "Tolima" },
+        { "id": "huila", "nombre": "Huila" },
+        { "id": "cauca", "nombre": "Cauca" },
+        { "id": "nariño", "nombre": "Nariño" },
+        { "id": "putumayo", "nombre": "Putumayo" },
+        { "id": "risaralda", "nombre": "Risaralda" },
+        { "id": "quindio", "nombre": "Quindío" },
+        { "id": "caquetá", "nombre": "Caquetá" },
+        { "id": "san-andres", "nombre": "San Andrés y Providencia" },
+        { "id": "arauca", "nombre": "Arauca" },
+        { "id": "casanare", "nombre": "Casanare" },
+        { "id": "boyacá", "nombre": "Boyacá" },
+        { "id": "cundinamarca", "nombre": "Cundinamarca" },
+        { "id": "medellin", "nombre": "Medellín (DC)" }
+      ],
+      "municipios": {
+        "antioquia": [
+          { "id": "medellin", "nombre": "Medellín" },
+          { "id": "belen-de-umbría", "nombre": "Belen de Umbría" },
+          { "id": "envigado", "nombre": "Envigado" },
+          { "id": "sabaneta", "nombre": "Sabaneta" }
+        ],
+        "bolivar": [
+          { "id": "cartagena", "nombre": "Cartagena" },
+          { "id": "sincelejo", "nombre": "Sincelejo" },
+          { "id": "montenegro", "nombre": "Montenegro" }
+        ],
+        "cundinamarca": [
+          { "id": "bogota", "nombre": "Bogotá D.C." },
+          { "id": "soacha", "nombre": "Soacha" },
+          { "id": "chia", "nombre": "Chia" },
+          { "id": "la-calera", "nombre": "La Calera" }
+        ],
+        "valle": [
+          { "id": "cali", "nombre": "Cali" },
+          { "id": "yumbo", "nombre": "Yumbo" },
+          { "id": "palmira", "nombre": "Palmira" },
+          { "id": "tuluá", "nombre": "Tuluá" }
+        ],
+        "norte-de-santander": [
+          { "id": "bucaramanga", "nombre": "Bucaramanga" },
+          { "id": "floridablanca", "nombre": "Floridablanca" },
+          { "id": "piedecuesta", "nombre": "Piedecuesta" }
+        ],
+        "sucre": [
+          { "id": "sincelejo", "nombre": "Sincelejo" },
+          { "id": "sampués", "nombre": "Sampués" },
+          { "id": "san-marcos", "nombre": "San Marcos" }
+        ],
+        "cordoba": [
+          { "id": "montería", "nombre": "Montería" },
+          { "id": "cereté", "nombre": "Cereté" },
+          { "id": "sahagún", "nombre": "Sahagún" }
+        ],
+        "meta": [
+          { "id": "villavicencio", "nombre": "Villavicencio" },
+          { "id": "acacías", "nombre": "Acacías" },
+          { "id": "restrepo", "nombre": "Restrepo" }
+        ],
+        "tolima": [
+          { "id": "ibagué", "nombre": "Ibagué" },
+          { "id": "español", "nombre": "Espinal" },
+          { "id": "planadas", "nombre": "Planadas" }
+        ],
+        "huila": [
+          { "id": "neiva", "nombre": "Neiva" },
+          { "id": "garzón", "nombre": "Garzón" },
+          { "id": "pital", "nombre": "Pital" }
+        ],
+        "cauca": [
+          { "id": "popayán", "nombre": "Popayán" },
+          { "id": "santander-de-quilichao", "nombre": "Santander de Quilichao" },
+          { "id": "puerto-tejada", "nombre": "Puerto Tejada" }
+        ],
+        "nariño": [
+          { "id": "pasto", "nombre": "Pasto" },
+          { "id": "tumaco", "nombre": "Tumaco" },
+          { "id": "ipí", "nombre": "Ipí" }
+        ],
+        "putumayo": [
+          { "id": "mocoa", "nombre": "Mocoa" },
+          { "id": "orito", "nombre": "Orito" },
+          { "id": "puerto-ais", "nombre": "Puerto Asís" }
+        ],
+        "risaralda": [
+          { "id": "pereira", "nombre": "Pereira" },
+          { "id": "dos-quebradas", "nombre": "Dos Quebradas" },
+          { "id": "balboa", "nombre": "Balboa" }
+        ],
+        "quindio": [
+          { "id": "armonia", "nombre": "Armenia" },
+          { "id": "calarcá", "nombre": "Calarcá" },
+          { "id": "la-tebajda", "nombre": "La Tebaida" }
+        ],
+        "caquetá": [
+          { "id": "florencia", "nombre": "Florencia" },
+          { "id": "san-vicente-del-caguán", "nombre": "San Vicente del Caguán" }
+        ],
+        "san-andres": [
+          { "id": "san-andrés", "nombre": "San Andrés" }
+        ],
+        "arauca": [
+          { "id": "arauca", "nombre": "Arauca" },
+          { "id": "arauquita", "nombre": "Arauquita" }
+        ],
+        "casanare": [
+          { "id": "yopal", "nombre": "Yopal" },
+          { "id": "tauramena", "nombre": "Tauramena" }
+        ],
+        "boyacá": [
+          { "id": "tunja", "nombre": "Tunja" },
+          { "id": "duitama", "nombre": "Duitama" },
+          { "id": "sogamoso", "nombre": "Sogamoso" }
+        ]
+      },
+      "modulos": {
+        "gobernaciones": {
+          "nombre": "Gobernaciones",
+          "tienePorLista": true,
+          "columnas": ["Part.", "Candidatos", "Municipio", "Cierre", "Total"],
+          "datos": [
+            {
+              "departamento": "Antioquia",
+              "municipio": "Medellín",
+              "partido": "Partido Verde",
+              "candidatos": ["Juan Pérez", "Maria Gomez", "Carlos Ruiz"],
+              "votos": [12500, 9800, 7200],
+              "votosBlancos": 800,
+              "votosNulos": 500,
+              "votosNoMarcados": 200,
+              "potencialSufragantes": 45000,
+              "ganadorIndex": 0
+            },
+            {
+              "departamento": "Antioquia",
+              "municipio": "Belen de Umbría",
+              "partido": "Partido Azul",
+              "candidatos": ["Laura Soto", "Pedro Fernandez"],
+              "votos": [5200, 4800],
+              "votosBlancos": 350,
+              "votosNulos": 200,
+              "votosNoMarcados": 100,
+              "potencialSufragantes": 12000,
+              "ganadorIndex": 0
+            }
+          ]
+        },
+        "asambleas": {
+          "nombre": "Asambleas",
+          "tienePorLista": true,
+          "columnas": ["Part.", "Candidatos", "Municipio", "Cierre", "Total"],
+          "datos": [
+            {
+              "departamento": "Antioquia",
+              "municipio": "Medellín",
+              "partido": "Partido Verde",
+              "candidatos": ["Juan Pérez", "Maria Gomez", "Carlos Ruiz"],
+              "votos": [15000, 9800, 7200],
+              "votosBlancos": 1000,
+              "votosNulos": 600,
+              "votosNoMarcados": 300,
+              "potencialSufragantes": 50000,
+              "ganadorIndex": 0
+            }
+          ]
+        },
+        "alcaldias": {
+          "nombre": "Alcaldías",
+          "tienePorLista": false,
+          "columnas": ["Part.", "Candidatos", "Cierre"],
+          "datos": [
+            {
+              "departamento": "Antioquia",
+              "municipio": "Medellín",
+              "partido": "Partido Verde",
+              "candidatos": ["Juan Pérez", "Maria Gomez", "Carlos Ruiz"],
+              "votos": [12000, 9500, 7200],
+              "votosBlancos": 900,
+              "votosNulos": 550,
+              "votosNoMarcados": 250,
+              "potencialSufragantes": 40000,
+              "ganadorIndex": 0
+            }
+          ]
+        },
+        "concejos": {
+          "nombre": "Concejos",
+          "tienePorLista": true,
+          "columnas": ["Part.", "Listas", "Elegidos"],
+          "datos": [
+            {
+              "departamento": "Antioquia",
+              "municipio": "Medellín",
+              "listas": ["Por la Lista", "Partido Verde Lista A", "Partido Azul Lista B", "Partido Centro Democrático"],
+              "candidatosPorLista": [
+                ["Juan Pérez", "Maria Gomez"],       // Por la Lista
+                ["Carlos Ruiz"],                      // Partido Verde Lista A
+                ["Laura Soto"],                       // Partido Azul Lista B
+                ["Pedro Fernandez"]                   // Partido Centro Democrático
+              ],
+              "votosPorLista": [3500, 2800, 2100, 1500],
+              "votosBlancos": 250,
+              "votosNulos": 180,
+              "votosNoMarcados": 100,
+              "potencialSufragantes": 20000,
+              "elegidosIndex": [0, 1]
+            }
+          ]
+        }
+      }
+    }
+  </div>
+
+  <header class="app-header">
+    <a href="#" class="logo">
+      <span>Guía Electoral</span>
+      <span>de Colombia</span>
+    </a>
+    <p class="titulo-secundario">Alcaldías y Concejos – Resultados Electorales</p>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <h1 class="titulo-principal">Guía Electoral de Colombia<br><span class="acento">Consulta de Resultados</span></h1>
+      <p class="subtitulo">Explora los resultados electorales por Gobernaciones, Asambleas, Alcaldías y Concejos en una interfaz moderna y atractiva. Todos los datos son de ejemplo y no representan información oficial.</p>
+      
+      <button class="cta-boton-principal" id="btn-acceder">
+        Acceder a Resultados
+      </button>
+
+      <p class="disclaimer">Datos de ejemplo - no oficiales</p>
+    </section>
+  </main>
+
+  <footer style="margin-top: var(--space-80); padding: var(--space-40) 0; color: var(--color-texto-secundario); font-size: var(--font-size-sm); text-align: center;">
+    <p>&copy; 2026 Guía Electoral de Colombia | <span class="marca-footer">Datos de ejemplo - no oficiales</span></p>
+  </footer>
+
+  <script>
+    // ============================================================
+    // APP.JS - Guía Electoral de Colombia Bienvenida (Vanilla JS)
+    // Datos de ejemplo - no oficiales
+    // ============================================================
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Referencias a elementos DOM
+      const ctaBtn = document.getElementById('btn-acceder');
+
+      // Verificar que los elementos existen
+      if (!ctaBtn) {
+        console.error('ERROR: No se encontró el botón CTA #btn-acceder');
+        return;
+      }
+
+      // CTA: navegar al menú de resultados
+      ctaBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Simular navegación al menú
+        document.querySelector('main').innerHTML = generarHTMLMenu();
+      });
+
+      // Tecla Enter en el CTA
+      ctaBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          document.querySelector('main').innerHTML = generarHTMLMenu();
+        }
+      });
+    });
+
+    /**
+     * Genera el HTML del Menú de Resultados
+     */
+    function generarHTMLMenu() {
+      return `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Guía Electoral de Colombia - Menú de Resultados</title>
+          <link rel="stylesheet" href="tokens.css">
+        </head>
+        <body class="body-menu">
+
+          <!-- Marca de datos de ejemplo -->
+          <p class="marca-datos-banner">Datos de ejemplo - no oficiales</p>
+
+          <header class="header-menu">
+            <a href="#" class="logo-menu">
+              <span>Guía Electoral</span>
+              <span class="flag">Colombia</span>
+              <span>de Colombia</span>
+            </a>
+            <p class="titulo-secundario-menu">Consulta de resultados electorales</p>
+          </header>
+
+          <main class="contenedor-principal">
+            <section class="barra-busqueda">
+              <div class="buscar-contenedor">
+                <input type="text" class="buscador-input" id="buscador-input" placeholder="Buscar departamento, municipio o partido...">
+                <button type="button" class="btn-lupa" aria-label="Buscar resultados">🔍</button>
+              </div>
+            </section>
+
+            <section class="menu-tiles">
+              <div class="tiles-container">
+
+                <!-- Tiles activos -->
+                <div class="tile-activo tile-base" data-modulo="gobernaciones" role="button" tabindex="0" aria-label="Gobernaciones">
+                  Gobernaciones
+                </div>
+
+                <div class="tile-activo tile-base" data-modulo="asambleas" role="button" tabindex="0" aria-label="Asambleas">
+                  Asambleas
+                </div>
+
+                <div class="tile-activo tile-base" data-modulo="alcaldias" role="button" tabindex="0" aria-label="Alcaldías">
+                  Alcaldías
+                </div>
+
+                <div class="tile-activo tile-base" data-modulo="concejos" role="button" tabindex="0" aria-label="Concejos">
+                  Concejos
+                </div>
+
+                <!-- Tiles deshabilitados -->
+                <div class="tile-deshabilitado" data-modulo="jal" aria-disabled="true" role="button" tabindex="-1">
+                  <span>JAL</span>
+                  <span class="etiqueta">Próximamente</span>
+                </div>
+
+                <div class="tile-deshabilitado" data-modulo="presidente" aria-disabled="true" role="button" tabindex="-1">
+                  <span>Presidente</span>
+                  <span class="etiqueta">Próximamente</span>
+                </div>
+
+                <div class="tile-deshabilitado" data-modulo="senado" aria-disabled="true" role="button" tabindex="-1">
+                  <span>Senado</span>
+                  <span class="etiqueta">Próximamente</span>
+                </div>
+
+                <div class="tile-deshabilitado" data-modulo="camara" aria-disabled="true" role="button" tabindex="-1">
+                  <span>Cámara</span>
+                  <span class="etiqueta">Próximamente</span>
+                </div>
+
+                <div class="tile-deshabilitado" data-modulo="bogota-jal" aria-disabled="true" role="button" tabindex="-1">
+                  <span>Bogotá D.C/JAL</span>
+                  <span class="etiqueta">Próximamente</span>
+                </div>
+
+              </div>
+            </section>
+
+            <footer class="app-footer">
+              <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <div style="color: var(--color-texto-secundario); font-size: var(--font-size-sm);">
+                  <span class="marca-datos-banner">Datos de ejemplo - no oficiales</span>
+                </div>
+                <nav style="display: flex; gap: var(--space-16);">
+                  <a href="bienvenida.html" style="color: var(--color-acento); font-size: var(--font-size-sm); text-decoration: none; font-weight: var(--font-weight-medium);">Bienvenida</a>
+                  <a href="#" style="color: var(--color-on-surface-light); font-size: var(--font-size-sm); text-decoration: none; opacity: 0.5;">Ayuda</a>
+                </nav>
+              </div>
+            </footer>
+
+            <script>
+              // ============================================================
+              // MENÚ JS - Guía Electoral de Colombia (Vanilla JS)
+              // Datos de ejemplo - no oficiales
+              // ============================================================
+
+              document.addEventListener('DOMContentLoaded', function() {
+                // Referencias
+                const buscadorInput = document.getElementById('buscador-input');
+
+                // Buscador en tiempo real
+                if (buscadorInput) {
+                  buscadorInput.addEventListener('input', function() {
+                    const termino = this.value.trim().toLowerCase();
+                    const tiles = document.querySelectorAll('.tile-module');
+
+                    tiles.forEach(tile => {
+                      const texto = tile.textContent.toLowerCase();
+                      if (texto.includes(termino)) {
+                        tile.style.display = '';
+                      } else {
+                        tile.style.display = 'none';
+                      }
+                    });
+                  });
+                }
+
+                // Tiles activos - navegar
+                const tilesActivos = document.querySelectorAll('.tile-activo');
+                tilesActivos.forEach(tile => {
+                  tile.addEventListener('click', function() {
+                    const modulo = this.getAttribute('data-modulo');
+                    // Simular navegación
+                    navegarAModulo(modulo);
+                  });
+
+                  // Tecla Enter
+                  tile.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      const modulo = this.getAttribute('data-modulo');
+                      navegarAModulo(modulo);
+                    }
+                  });
+                });
+
+                // Tiles deshabilitados - solo feedback visual
+                const tilesDeshabilitados = document.querySelectorAll('.tile-deshabilitado');
+                tilesDeshabilitados.forEach(tile => {
+                  tile.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    alert('Este módulo está por venir. Próximamente.');
+                  });
+
+                  tile.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      alert('Este módulo está por venir. Próximamente.');
+                    }
+                  });
+                });
+
+                function navegarAModulo(modulo) {
+                  // Ocultar menú y mostrar la pantalla correspondiente
+                  document.body.innerHTML = generarPantallaModulo(modulo);
+                }
+              });
+            </script>
+          </main>
+
+        </body>
+        </html>
+      `;
+    }
+
+    /**
+     * Genera la pantalla del módulo seleccionado
+     * @param {string} modulo - Nombre del módulo
+     */
+    function generarPantallaModulo(modulo) {
+      switch(modulo) {
+        case 'gobernaciones':
+          return generarHTMLGobernacionesAsambleas();
+        case 'asambleas':
+          return generarHTMLGobernacionesAsambleas();
+        case 'alcaldias':
+          return generarHTMLAlcaldiasConcejios('alcaldias');
+        case 'concejos':
+          return generarHTMLAlcaldiasConcejios('concejos');
+        default:
+          return '';
+      }
+    }
+
+    /**
+     * Genera HTML Gobernaciones y Asambleas
+     */
+    function generarHTMLGobernacionesAsambleas() {
+      return `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Guía Electoral de Colombia - Gobernaciones y Asambleas</title>
+          <link rel="stylesheet" href="tokens.css">
+        </head>
+        <body class="body-gobernaciones">
+
+          <!-- Marca de datos de ejemplo banner superior prominente -->
+          <p class="marca-datos-banner">Datos de ejemplo - no oficiales</p>
+
+          <header class="header-gobernaciones">
+            <a href="#" class="logo">
+              <span>Guía Electoral</span>
+              <span>de Colombia</span>
+            </a>
+            <p class="titulo">Gobernaciones y Asambleas - Resultados Electorales</p>
+          </header>
+
+          <main class="contenedor-principal">
+            <!-- Tarjetas clave -->
+            <section class="tarjetas-clave">
+              <div class="estadistica-item">
+                <div class="numero">1.200</div>
+                <div class="etiqueta">Municipios</div>
+              </div>
+              <div class="estadistica-item">
+                <div class="numero">34</div>
+                <div class="etiqueta">Departamentos</div>
+              </div>
+              <div class="estadistica-item">
+                <div class="numero">4</div>
+                <div class="etiqueta">Módulos Activos</div>
+              </div>
+              <div class="estadistica-item">
+                <div class="numero">Períodos</div>
+                <div class="etiqueta">Disponibles</div>
+              </div>
+            </section>
+
+            <button class="cta-boton-principal" style="margin: var(--space-32) auto; display: block;" id="btn-ver-resultados">
+              Ver Resultados
+            </button>
+
+            <!-- Filtros sección -->
+            <section class="filtros-seccion">
+              <div class="selector-periodo">
+                <label for="periodo-selector-gobern">Período:</label>
+                <select id="periodo-selector-gobern">
+                  <option value="periodo-1" selected>2020-2023 (Activo)</option>
+                  <option value="periodo-2">2024-2027 (Activo)</option>
+                  <option value="periodo-3" disabled>2028-2031</option>
+                  <option value="periodo-4" disabled>2032-2035</option>
+                </select>
+              </div>
+
+              <div class="selector-departamento">
+                <label for="departamento-selector-gobern">Departamento:</label>
+                <select id="departamento-selector-gobern">
+                  <option value="">Seleccionar departamento</option>
+                  <option value="amazonas">Amazonas</option>
+                  <option value="antioquia">Antioquia</option>
+                  <option value="bolivar">Bolivar</option>
+                  <option value="cundinamarca">Cundinamarca</option>
+                  <option value="valle">Valle del Cauca</option>
+                  <option value="norte-de-santander">Norte de Santander</option>
+                  <option value="sucre">Sucre</option>
+                  <option value="cordoba">Córdoba</option>
+                  <option value="meta">Meta</option>
+                  <option value="tolima">Tolima</option>
+                  <option value="huila">Huila</option>
+                  <option value="cauca">Cauca</option>
+                  <option value="nariño">Nariño</option>
+                  <option value="putumayo">Putumayo</option>
+                  <option value="risaralda">Risaralda</option>
+                  <option value="quindio">Quindío</option>
+                  <option value="caquetá">Caquetá</option>
+                  <option value="san-andrés">San Andrés y Providencia</option>
+                  <option value="arauca">Arauca</option>
+                  <option value="casanare">Casanare</option>
+                  <option value="boyacá">Boyacá</option>
+                  <option value="cundinamarca">Cundinamarca</option>
+                  <option value="medellin">Medellín (DC)</option>
+                </select>
+              </div>
+
+              <div class="selector-municipio">
+                <label for="municipio-selector-gobern">Municipio:</label>
+                <select id="municipio-selector-gobern">
+                  <option value="">Seleccionar municipio</option>
+                </select>
+              </div>
+
+              <button class="btn-acceder">Acceder</button>
+
+              <p class="texto-ayuda">Seleccione un departamento y municipio para ver los resultados.</p>
+            </section>
+
+            <div class="contenedor-tabla">
+              <p id="mensaje-vacio" style="color: var(--color-texto-secundario); padding: var(--space-24); text-align: center;">Seleccione un departamento y municipio para ver los resultados.</p>
+              <table class="tabla-resultados" id="tabla-resultados">
+                <thead>
+                  <tr>
+                    <th>Part.</th>
+                    <th>Candidatos</th>
+                    <th class="th-municipio">Municipio</th>
+                    <th>Cierre</th>
+                    <th>VOTACIÓN TOTAL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Filas se generarán con JS -->
+                </tbody>
+                <tfoot>
+                  <!-- Fila total se generará con JS -->
+                </tfoot>
+              </table>
+            </div>
+          </main>
+
+          <script>
+            // ============================================================
+            // GOBERNACIONES ASAMBLEAS JS - Guía Electoral de Colombia
+            // Datos de ejemplo - no oficiales
+            // Aplica RN-01, RN-13, A2, D1
+            // ============================================================
+
+            const datosDepartamentos = {
+              amazonas: { nombre: "Amazonas", municipios: ["Leticia", "Puerto Nariño"] },
+              antioquia: { nombre: "Antioquia", municipios: ["Medellín", "Belen de Umbría", "Envigado", "Sabaneta"] },
+              bolivar: { nombre: "Bolivar", municipios: ["Cartagena", "Sincelejo", "Montenegro"] },
+              cundinamarca: { nombre: "Cundinamarca", municipios: ["Bogotá D.C.", "Soacha", "Chia", "La Calera"] },
+              valle: { nombre: "Valle del Cauca", municipios: ["Cali", "Yumbo", "Palmira", "Tuluá"] },
+              norte-de-santander: { nombre: "Norte de Santander", municipios: ["Bucaramanga", "Floridablanca", "Piedecuesta"] },
+              sucre: { nombre: "Sucre", municipios: ["Sincelejo", "Sampués", "San Marcos"] },
+              cordoba: { nombre: "Córdoba", municipios: ["Montería", "Cereté", "Sahagún"] },
+              meta: { nombre: "Meta", municipios: ["Villavicencio", "Acacías", "Restrepo"] },
+              tolima: { nombre: "Tolima", municipios: ["Ibagué", "Espinal", "Planadas"] },
+              huila: { nombre: "Huila", municipios: ["Neiva", "Garzón", "Pital"] },
+              cauca: { nombre: "Cauca", municipios: ["Popayán", "Santander de Quilichao", "Puerto Tejada"] },
+              nariño: { nombre: "Nariño", municipios: ["Pasto", "Tumaco", "Ipí"] },
+              putumayo: { nombre: "Putumayo", municipios: ["Mocoa", "Orito", "Puerto Asís"] },
+              risaralda: { nombre: "Risaralda", municipios: ["Pereira", "Dos Quebradas", "Balboa"] },
+              quindio: { nombre: "Quindío", municipios: ["Armenia", "Calarcá", "La Tebaida"] },
+              caquetá: { nombre: "Caquetá", municipios: ["Florencia", "San Vicente del Caguán"] },
+              san-andres: { nombre: "San Andrés y Providencia", municipios: ["San Andrés"] },
+              arauca: { nombre: "Arauca", municipios: ["Arauca", "Arauquita"] },
+              casanare: { nombre: "Casanare", municipios: ["Yopal", "Tauramena"] },
+              boyacá: { nombre: "Boyacá", municipios: ["Tunja", "Duitama", "Sogamoso"] },
+            };
+
+            // Datos de ejemplo por municipio para Gobernaciones (Gobernaciones/Asambleas tienen "Por la Lista")
+            const datosMunicipio = {
+              medellin: {
+                departamento: "Antioquia",
+                municipio: "Medellín",
+                partido: "Partido Verde",
+                candidatos: ["Juan Pérez", "Maria Gomez", "Carlos Ruiz"], // ordenados descending por votos
+                votos: [12500, 9800, 7200],
+                votosBlancos: 800,
+                votosNulos: 500,
+                votosNoMarcados: 200,
+                potencialSufragantes: 45000,
+                ganadorIndex: 0,
+                tienePorLista: true
+              },
+              belen-de-umbría: {
+                departamento: "Antioquia",
+                municipio: "Belen de Umbría",
+                partido: "Partido Azul",
+                candidatos: ["Laura Soto", "Pedro Fernandez"],
+                votos: [5200, 4800],
+                votosBlancos: 350,
+                votosNulos: 200,
+                votosNoMarcados: 100,
+                potencialSufragantes: 12000,
+                ganadorIndex: 0,
+                tienePorLista: true
+              },
+              cartagena: {
+                departamento: "Bolivar",
+                municipio: "Cartagena",
+                partido: "Partido Liberal",
+                candidatos: ["Andres Martinez", "Camila Torres", "Roberto Silva"],
+                votos: [8900, 7500, 6200],
+                votosBlancos: 650,
+                votosNulos: 400,
+                votosNoMarcados: 250,
+                potencialSufragantes: 30000,
+                ganadorIndex: 0,
+                tienePorLista: true
+              },
+              cali: {
+                departamento: "Valle del Cauca",
+                municipio: "Cali",
+                partido: "Partido Conservador",
+                candidatos: ["Maria Vargas", "Jose Castillo"],
+                votos: [11000, 8700],
+                votosBlancos: 900,
+                votosNulos: 600,
+                votosNoMarcados: 300,
+                potencialSufragantes: 35000,
+                ganadorIndex: 0,
+                tienePorLista: true
+              },
+              bucaramanga: {
+                departamento: "Norte de Santander",
+                municipio: "Bucaramanga",
+                partido: "Partido Centro Democrático",
+                candidatos: ["Carlos Gomez", "Ana Maria"],
+                votos: [7800, 6900],
+                votosBlancos: 500,
+                votosNulos: 350,
+                votosNoMarcados: 150,
+                potencialSufragantes: 25000,
+                ganadorIndex: 0,
+                tienePorLista: true
+              }
+            };
+
+            // Estado inicial
+            let departamentoSeleccionado = null;
+            let municipioSeleccionado = null;
+
+            document.addEventListener('DOMContentLoaded', function() {
+              // Cargar municipios cuando cambia el departamento
+              const deptSelect = document.getElementById('departamento-selector-gobern');
+              const munSelect = document.getElementById('municipio-selector-gobern');
+              const tablaContainer = document.getElementById('tabla-resultados');
+              const mensajeVacio = document.getElementById('mensaje-vacio');
+
+              if (deptSelect) {
+                deptSelect.addEventListener('change', function() {
+                  const deptId = this.value;
+                  departamentoSeleccionado = deptId;
+
+                  // Limpiar y cargar municipios
+                  munSelect.innerHTML = '<option value="">Seleccionar municipio</option>';
+
+                  if (deptId && datosDepartamentos[deptId]) {
+                    const municipios = datosDepartamentos[deptId].municipios;
+                    municipios.forEach(mun => {
+                      const opt = document.createElement('option');
+                      opt.value = mun.toLowerCase().replace(/\s+/g, '-').replace(/á/g, 'a').replace(/é/g, 'e').replace(/í/g, 'i').replace(/ó/g, 'o').replace(/ú/g, 'u');
+                      opt.textContent = mun;
+                      munSelect.appendChild(opt);
+                    });
+                  }
+
+                  // Ocultar mensaje y tabla
+                  if (mensajeVacio) mensajeVacio.style.display = 'block';
+                  if (tablaContainer) tablaContainer.style.display = 'none';
+                });
+              }
+
+              // Cuando cambia el municipio, mostrar resultados
+              if (munSelect) {
+                munSelect.addEventListener('change', function() {
+                  const munId = this.value;
+                  municipioSeleccionado = munId;
+
+                  // Ocultar mensaje vacío y mostrar container
+                  if (mensajeVacio) mensajeVacio.style.display = 'none';
+                  if (tablaContainer) tablaContainer.style.display = 'block';
+
+                  if (munId && datosMunicipio[munId]) {
+                    const datos = datosMunicipio[munId];
+                    mostrarResultados(datos);
+                  } else {
+                    if (mensajeVacio) mensajeVacio.textContent = 'No hay datos disponibles para el municipio seleccionado.';
+                    if (tablaContainer) tablaContainer.style.display = 'none';
+                  }
+                });
+              }
+
+              // Inicializar: si hay un departamento por defecto, cargar municipios
+              if (deptSelect) {
+                deptSelect.dispatchEvent(new Event('change'));
+              }
+            });
+
+            /**
+             * Muestra los resultados en la tabla
+             * @param {object} datos - Datos del municipio
+             */
+            function mostrarResultados(datos) {
+              const tabla = document.getElementById('tabla-resultados');
+              const tbody = tabla.querySelector('tbody');
+              const tfoot = tabla.querySelector('tfoot');
+              const mensajeVacio = document.getElementById('mensaje-vacio');
+
+              if (!tabla || !tbody) return;
+
+              const candidatos = datos.candidatos;
+              const votos = datos.votos;
+              const votosBlancos = datos.votosBlancos;
+              const votosNulos = datos.votosNulos;
+              const votosNoMarcados = datos.votosNoMarcados;
+              const potencialSufragantes = datos.potencialSufragantes;
+              const ganadorIndex = datos.ganadorIndex || 0;
+
+              // Calcular VOTACIÓN TOTAL según RN-13 y A2
+              // RN-13: datos/orden/ganador se calculan desde el JSON
+              // A2: En Gobernaciones/Asambleas hay "Por la Lista": se suman candidatos + "Por la Lista" + blancos + nulos + no marcados
+              // Como los datos ya vienen con votos por candidato, sumamos todos + blancos + nulos + no marcados
+              let totalVotacion = 0;
+              for (let i = 0; i < votos.length; i++) {
+                totalVotacion += votos[i];
+              }
+              totalVotacion += votosBlancos + votosNulos + votosNoMarcados;
+
+              // Limpiar tabla
+              tbody.innerHTML = '';
+
+              // Filas de candidatos (ya vienen ordenados descending por votos)
+              votos.forEach((votoIdx, idx) => {
+                const esGanadorFila = idx === ganadorIndex;
+                const nombreCandidato = candidatos[idx] || '--';
+
+                const tr = document.createElement('tr');
+                tr.className = esGanadorFila ? 'ganador' : '';
+                tr.style.transition = 'background-color 0.2s ease';
+
+                // Celda Part.
+                const tdPart = document.createElement('td');
+                tdPart.textContent = idx + 1;
+                tdPart.style.fontWeight = '600';
+                tdPart.style.padding = 'var(--space-4) var(--space-6)';
+                tdPart.style.fontSize = 'var(--font-size-table-cell)';
+                tr.appendChild(tdPart);
+
+                // Celda Candidatos
+                const tdCandidatos = document.createElement('td');
+                tdCandidatos.textContent = nombreCandidato;
+                tdCandidatos.style.padding = 'var(--space-4) var(--space-6)';
+                tdCandidatos.style.fontSize = 'var(--font-size-table-cell)';
+                tr.appendChild(tdCandidatos);
+
+                // Celda Municipio
+                const tdMunicipio = document.createElement('td');
+                tdMunicipio.textContent = datos.municipio;
+                tdMunicipio.style.padding = 'var(--space-4) var(--space-6)';
+                tdMunicipio.style.fontSize = 'var(--font-size-table-cell)';
+                tr.appendChild(tdMunicipio);
+
+                // Celda Cierre (Blancos + Nulos + No marcados)
+                const tdCierre = document.createElement('td');
+                const cierreTexto = `Blanco: ${votosBlancos} | Nulo: ${votosNulos} | No marcado: ${votosNoMarcados}`;
+                tdCierre.innerHTML = cierreTexto;
+                tdCierre.style.padding = 'var(--space-4) var(--space-6)';
+                tdCierre.style.fontSize = 'var(--font-size-table-cell)';
+                tr.appendChild(tdCierre);
+
+                // Celda VOTACIÓN TOTAL
+                const tdTotal = document.createElement('td');
+                tdTotal.textContent = totalVotacion.toLocaleString();
+                tdTotal.style.fontWeight = 'bold';
+                tdTotal.style.color = 'var(--color-acento)';
+                tdTotal.style.padding = 'var(--space-4) var(--space-6)';
+                tdTotal.style.fontSize = 'var(--font-size-table-cell)';
+                tdTotal.style.textAlign = 'right';
+                tr.appendChild(tdTotal);
+
+                tbody.appendChild(tr);
+              });
+
+              // Fila "VOTACIÓN TOTAL" al final
+              if (tfoot) {
+                tfoot.innerHTML = '';
+
+                const trTotal = document.createElement('tr');
+                trTotal.className = 'total-votacion';
+
+                const tdTotalCol1 = document.createElement('td');
+                tdTotalCol1.colSpan = 4;
+                tdTotalCol1.style.padding = 'var(--space-4) var(--space-6)';
+                tdTotalCol1.style.fontSize = 'var(--font-size-table-cell)';
+                tdTotalCol1.style.textAlign = 'right';
+                trTotal.appendChild(tdTotalCol1);
+
+                const tdTotalVal = document.createElement('td');
+                tdTotalVal.textContent = 'VOTACIÓN TOTAL: ' + totalVotacion.toLocaleString();
+                tdTotalVal.style.padding = 'var(--space-4) var(--space-6)';
+                tdTotalVal.style.fontWeight = 'bold';
+                tdTotalVal.style.color = 'var(--color-on-primary)';
+                tdTotalVal.style.fontSize = 'var(--font-size-table-cell)';
+                tdTotalVal.style.textAlign = 'right';
+                trTotal.appendChild(tdTotalVal);
+
+                tfoot.appendChild(trTotal);
+
+                // Fila "Potencial de sufragantes"
+                const trPotencial = document.createElement('tr');
+                trPotencial.className = 'fila-potencial';
+
+                const tdPotencial = document.createElement('td');
+                tdPotencial.colSpan = 5;
+                tdPotencial.style.padding = 'var(--space-4) var(--space-6)';
+                tdPotencial.style.fontSize = 'var(--font-size-sm)';
+                tdPotencial.style.color = 'var(--color-texto-secundario)';
+                tdPotencial.style.textAlign = 'left';
+                tdPotencial.innerHTML = `Potencial de sufragantes: ${potencialSufragantes.toLocaleString()} `;
+                trPotencial.appendChild(tdPotencial);
+
+                tfoot.appendChild(trPotencial);
+              }
+
+              // Efecto hover en filas (después de agregar)
+              setTimeout(() => {
+                const filas = tabla.querySelectorAll('tbody tr:not(.ganador)');
+                filas.forEach(fila => {
+                  fila.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = 'rgba(0, 212, 170, 0.08)';
+                  });
+                  fila.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '';
+                  });
+                });
+              }, 10);
+            }
+          </script>
+
+        </body>
+        </html>
+      `;
+    }
+
+    /**
+     * Genera HTML Alcaldías y Concejos
+     * @param {string} tipo - 'alcaldias' o 'concejos'
+     */
+    function generarHTMLAlcaldiasConcejios(tipo) {
+      return `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Guía Electoral de Colombia - Alcaldías y Concejos</title>
+          <link rel="stylesheet" href="tokens.css">
+        </head>
+        <body class="body-alcaldias">
+
+          <!-- Marca de datos de ejemplo banner superior prominente -->
+          <p class="marca-datos-banner">Datos de ejemplo - no oficiales</p>
+
+          <header class="header-alcaldias">
+            <a href="#" class="logo">
+              <span>Guía Electoral</span>
+              <span>de Colombia</span>
+            </a>
+            <p class="titulo">Alcaldías y Concejos - Resultados Electorales</p>
+          </header>
+
+          <main class="contenedor-principal">
+            <!-- Barra superior -->
+            <div class="barra-superior">
+              <div class="selector-periodo">
+                <label for="periodo-selector-alcaldia">Período:</label>
+                <select id="periodo-selector-alcaldia">
+                  <option value="periodo-1">2020-2023 (Activo)</option>
+                  <option value="periodo-2">2024-2027 (Activo)</option>
+                  <option value="periodo-3" disabled>2028-2031</option>
+                  <option value="periodo-4" disabled>2032-2035</option>
+                </select>
+              </div>
+
+              <div class="selector-departamento">
+                <label for="departamento-selector-alcaldia">Departamento:</label>
+                <select id="departamento-selector-alcaldia">
+                  <option value="">Seleccionar departamento</option>
+                  <option value="antioquia">Antioquia</option>
+                  <option value="bolivar">Bolivar</option>
+                  <option value="cundinamarca">Cundinamarca</option>
+                  <option value="valle">Valle del Cauca</option>
+                  <option value="norte-de-santander">Norte de Santander</option>
+                </select>
+              </div>
+
+              <div class="selector-municipio">
+                <label for="municipio-selector-alcaldia">Municipio:</label>
+                <select id="municipio-selector-alcaldia">
+                  <option value="">Seleccionar municipio</option>
+                </select>
+              </div>
+
+              <button class="btn-actualizar" style="padding: var(--space-4) var(--space-8); background: var(--gradiente-primario); color: var(--color-on-primary); border: none; border-radius: var(--radius-md); cursor: pointer; font-size: var(--font-size-sm);">Actualizar</button>
+            </div>
+
+            <!-- Sección Alcaldías -->
+            <div class="contenedor-tabla-alcaldia">
+              <p id="mensaje-vacio-alcaldia" style="color: var(--color-texto-secundario); padding: var(--space-24); text-align: center;">Seleccione un departamento y municipio para ver los resultados.</p>
+              <table class="tabla-alcaldia" id="tabla-alcaldia">
+                <thead>
+                  <tr>
+                    <th>Part.</th>
+                    <th>Candidatos</th>
+                    <th>Ganador</th>
+                    <th>Cierre RN-06</th>
+                    <th>VOTACIÓN TOTAL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Filas se generarán con JS -->
+                </tbody>
+                <tfoot>
+                  <!-- Fila total se generará con JS -->
+                </tfoot>
+              </table>
+            </div>
+
+            <!-- Sección Concejos -->
+            <div class="contenedor-tabla-concejo">
+              <p id="mensaje-vacio-concejo" style="color: var(--color-texto-secundario); padding: var(--space-24); text-align: center;">Seleccione un departamento y municipio para ver los resultados.</p>
+              <table class="tabla-concejo" id="tabla-concejo">
+                <thead>
+                  <tr>
+                    <th>Part.</th>
+                    <th>Listas</th>
+                    <th>Elegidos</th>
+                    <th>Cierre RN-06</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Filas se generarán con JS -->
+                </tbody>
+              </table>
+
+              <!-- Fila Potencial de sufragantes para Concejos -->
+              <div id="fila-potencial-concejo" style="margin-top: var(--space-16); padding: var(--space-12); background: var(--color-superficie); border: 2px solid var(--color-borde); border-radius: var(--radius-md); display: none;">
+                <span style="font-size: var(--font-size-sm); color: var(--color-texto-secundario);">Potencial de sufragantes: <span id="num-potencial-concejo">-</span></span>
+              </div>
+            </div>
+          </main>
+
+          <script>
+            // ============================================================
+            // ALCALDÍAS Y CONCEJOS JS - Guía Electoral de Colombia
+            // Datos de ejemplo - no oficiales
+            // Aplica RN-01, RN-13, A2, D1, D2
+            // ============================================================
+
+            const datosDepartamentos = {
+              antioquia: { nombre: "Antioquia", municipios: ["Medellín", "Belen de Umbría", "Envigado", "Sabaneta"] },
+              bolivar: { nombre: "Bolivar", municipios: ["Cartagena", "Sincelejo", "Montenegro"] },
+              cundinamarca: { nombre: "Cundinamarca", municipios: ["Bogotá D.C.", "Soacha", "Chia", "La Calera"] },
+              valle: { nombre: "Valle del Cauca", municipios: ["Cali", "Yumbo", "Palmira", "Tuluá"] },
+              norte-de-santander: { nombre: "Norte de Santander", municipios: ["Bucaramanga", "Floridablanca", "Piedecuesta"] }
+            };
+
+            // Datos de ejemplo para Alcaldías (sin "Por la Lista")
+            const datosAlcaldia = {
+              medellin: {
+                departamento: "Antioquia",
+                municipio: "Medellín",
+                partido: "Partido Verde",
+                candidatos: ["Juan Pérez", "Maria Gomez", "Carlos Ruiz"], // ordenados descending
+                votos: [12000, 9500, 7200],
+                votosBlancos: 900,
+                votosNulos: 550,
+                votosNoMarcados: 250,
+                potencialSufragantes: 40000,
+                ganadorIndex: 0
+              },
+              cartagena: {
+                departamento: "Bolivar",
+                municipio: "Cartagena",
+                partido: "Partido Liberal",
+                candidatos: ["Andres Martinez", "Camila Torres"],
+                votos: [8900, 7500],
+                votosBlancos: 650,
+                votosNulos: 400,
+                votosNoMarcados: 250,
+                potencialSufragantes: 28000,
+                ganadorIndex: 0
+              },
+              cali: {
+                departamento: "Valle del Cauca",
+                municipio: "Cali",
+                partido: "Partido Conservador",
+                candidatos: ["Maria Vargas", "Jose Castillo"],
+                votos: [11000, 8700],
+                votosBlancos: 900,
+                votosNulos: 600,
+                votosNoMarcados: 300,
+                potencialSufragantes: 35000,
+                ganadorIndex: 0
+              }
+            };
+
+            // Datos de ejemplo para Concejos (con "Por la Lista")
+            const datosConcejo = {
+              medellin: {
+                departamento: "Antioquia",
+                municipio: "Medellín",
+                listas: ["Por la Lista", "Partido Verde Lista A", "Partido Azul Lista B", "Partido Centro Democrático"],
+                candidatosPorLista: [
+                  ["Juan Pérez", "Maria Gomez"],       // Por la Lista
+                  ["Carlos Ruiz"],                      // Partido Verde Lista A
+                  ["Laura Soto"],                       // Partido Azul Lista B
+                  ["Pedro Fernandez"]                   // Partido Centro Democrático
+                ],
+                votosPorLista: [3500, 2800, 2100, 1500],
+                votosBlancos: 250,
+                votosNulos: 180,
+                votosNoMarcados: 100,
+                potencialSufragantes: 20000,
+                elegidosIndex: [0, 1]
+              },
+              cartagena: {
+                departamento: "Bolivar",
+                municipio: "Cartagena",
+                listas: ["Por la Lista", "Partido Liberal Lista A", "Partido Conservador Lista B"],
+                candidatosPorLista: [
+                  ["Andres Martinez", "Camila Torres"], // Por la Lista
+                  ["Roberto Silva"],                    // Partido Liberal Lista A
+                  ["Sandra Gomez"]                      // Partido Conservador Lista B
+                ],
+                votosPorLista: [4200, 3100, 2500],
+                votosBlancos: 300,
+                votosNulos: 200,
+                votosNoMarcados: 120,
+                potencialSufragantes: 22000,
+                elegidosIndex: [0, 2]
+              }
+            };
+
+            // Estado inicial
+            let departamentoSeleccionado = null;
+            let municipioSeleccionado = null;
+
+            document.addEventListener('DOMContentLoaded', function() {
+              // Cargar municipios cuando cambia el departamento
+              const deptSelect = document.getElementById('departamento-selector-alcaldia');
+              const munSelect = document.getElementById('municipio-selector-alcaldia');
+              const tablaAlcaldia = document.getElementById('tabla-alcaldia');
+              const mensajeVacioAlcaldia = document.getElementById('mensaje-vacio-alcaldia');
+              const tablaConcejo = document.getElementById('tabla-concejo');
+              const mensajeVacioConcejo = document.getElementById('mensaje-vacio-concejo');
+              const filaPotencialConcejo = document.getElementById('fila-potencial-concejo');
+
+              if (deptSelect) {
+                deptSelect.addEventListener('change', function() {
+                  const deptId = this.value;
+                  departamentoSeleccionado = deptId;
+
+                  // Limpiar y cargar municipios
+                  munSelect.innerHTML = '<option value="">Seleccionar municipio</option>';
+
+                  if (deptId && datosDepartamentos[deptId]) {
+                    const municipios = datosDepartamentos[deptId].municipios;
+                    municipios.forEach(mun => {
+                      const opt = document.createElement('option');
+                      opt.value = mun.toLowerCase().replace(/\s+/g, '-').replace(/á/g, 'a').replace(/é/g, 'e').replace(/í/g, 'i').replace(/ó/g, 'o').replace(/ú/g, 'u');
+                      opt.textContent = mun;
+                      munSelect.appendChild(opt);
+                    });
+                  }
+
+                  // Ocultar mensajes y tablas
+                  if (mensajeVacioAlcaldia) mensajeVacioAlcaldia.style.display = 'block';
+                  if (mensajeVacioConcejo) mensajeVacioConcejo.style.display = 'block';
+                  if (tablaAlcaldia) tablaAlcaldia.style.display = 'none';
+                  if (tablaConcejo) tablaConcejo.style.display = 'none';
+                  if (filaPotencialConcejo) filaPotencialConcejo.style.display = 'none';
+                });
+              }
+
+              // Cuando cambia el municipio, mostrar resultados
+              if (munSelect) {
+                munSelect.addEventListener('change', function() {
+                  const munId = this.value;
+                  municipioSeleccionado = munId;
+
+                  // Ocultar mensajes vacíos
+                  if (mensajeVacioAlcaldia) mensajeVacioAlcaldia.style.display = 'none';
+                  if (mensajeVacioConcejo) mensajeVacioConcejo.style.display = 'none';
+                  if (tablaAlcaldia) tablaAlcaldia.style.display = 'block';
+                  if (tablaConcejo) tablaConcejo.style.display = 'block';
+
+                  if (munId && datosAlcaldia[munId]) {
+                    const datosAlcald = datosAlcaldia[munId];
+                    mostrarAlcaldiaResultados(datosAlcald);
+                    // Ocultar sección de concejos cuando se muestran alcaldías
+                    if (tablaConcejo) tablaConcejo.style.display = 'none';
+                    if (filaPotencialConcejo) filaPotencialConcejo.style.display = 'none';
+                  } else if (munId && datosConcejo[munId]) {
+                    const datosConce = datosConcejo[munId];
+                    mostrarConcejoResultados(datosConce);
+                    // Mostrar sección de concejos, ocultar alcaldías
+                    if (tablaAlcaldia) tablaAlcaldia.style.display = 'none';
+                    if (filaPotencialConcejo) filaPotencialConcejo.style.display = 'block';
+                  } else {
+                    if (mensajeVacioAlcaldia) mensajeVacioAlcaldia.textContent = 'No hay datos disponibles para el municipio seleccionado.';
+                    if (mensajeVacioConcejo) mensajeVacioConcejo.textContent = 'No hay datos disponibles para el municipio seleccionado.';
+                    if (tablaAlcaldia) tablaAlcaldia.style.display = 'none';
+                    if (tablaConcejo) tablaConcejo.style.display = 'none';
+                    if (filaPotencialConcejo) filaPotencialConcejo.style.display = 'none';
+                  }
+                });
+              }
+
+              // Inicializar
+              if (deptSelect) {
+                deptSelect.dispatchEvent(new Event('change'));
+              }
+            });
+
+            /**
+             * Muestra los resultados de Alcaldía
+             * @param {object} datos - Datos de la alcaldía
+             */
+            function mostrarAlcaldiaResultados(datos) {
+              const tabla = document.getElementById('tabla-alcaldia');
+              const tbody = tabla.querySelector('tbody');
+              const tfoot = tabla.querySelector('tfoot');
+              const mensajeVacio = document.getElementById('mensaje-vacio-alcaldia');
+
+              if (!tabla || !tbody) return;
+
+              const candidatos = datos.candidatos;
+              const votos = datos.votos;
+              const votosBlancos = datos.votosBlancos;
+              const votosNulos = datos.votosNulos;
+              const votosNoMarcados = datos.votosNoMarcados;
+              const potencialSufragantes = datos.potencialSufragantes;
+              const ganadorIndex = datos.ganadorIndex || 0;
+
+              // Calcular VOTACIÓN TOTAL según RN-13 y A2
+              // A2: En Gobernaciones/Alcaldías no hay "Por la Lista": se suman candidatos + blancos + nulos + no marcados
+              let totalVotacion = 0;
+              for (let i = 0; i < votos.length; i++) {
+                totalVotacion += votos[i];
+              }
+              totalVotacion += votosBlancos + votosNulos + votosNoMarcados;
+
+              // Limpiar tabla
+              tbody.innerHTML = '';
+
+              // Filas de candidatos
+              votos.forEach((votoIdx, idx) => {
+                const esGanadorFila = idx === ganadorIndex;
+
+                const tr = document.createElement('tr');
+                tr.className = esGanadorFila ? 'ganador' : '';
+                tr.style.transition = 'background-color 0.2s ease';
+
+                // Celda Part.
+                const tdPart = document.createElement('td');
+                tdPart.textContent = idx + 1;
+                tdPart.style.fontWeight = '600';
+                tdPart.style.padding = 'var(--space-4) var(--space-6)';
+                tdPart.style.fontSize = 'var(--font-size-table-cell)';
+                tr.appendChild(tdPart);
+
+                // Celda Candidatos
+                const tdCandidatos = document.createElement('td');
+                tdCandidatos.textContent = candidatos[idx] || '--';
+                tdCandidatos.style.padding = 'var(--space-4) var(--space-6)';
+                tdCandidatos.style.fontSize = 'var(--font-size-table-cell)';
+                tr.appendChild(tdCandidatos);
+
+                // Celda Ganador (sí/No)
+                const tdGanador = document.createElement('td');
+                tdGanador.textContent = idx === ganadorIndex ? 'Sí' : 'No';
+                tdGanador.style.padding = 'var(--space-4) var(--space-6)';
+                tdGanador.style.fontSize = 'var(--font-size-table-cell)';
+                tdGanador.style.textAlign = 'center';
+                tr.appendChild(tdGanador);
+
+                // Celda Cierre RN-06
+                const tdCierre = document.createElement('td');
+                const cierreTexto = `Blanco: ${votosBlancos} | Nulo: ${votosNulos} | No marcado: ${votosNoMarcados}`;
+                tdCierre.innerHTML = cierreTexto;
+                tdCierre.style.padding = 'var(--space-4) var(--space-6)';
+                tdCierre.style.fontSize = 'var(--font-size-table-cell)';
+                tr.appendChild(tdCierre);
+
+                // Celda VOTACIÓN TOTAL (Alcaldías SÍ tienen esta fila)
+                const tdTotal = document.createElement('td');
+                tdTotal.textContent = totalVotacion.toLocaleString();
+                tdTotal.style.fontWeight = 'bold';
+                tdTotal.style.color = 'var(--color-acento)';
+                tdTotal.style.padding = 'var(--space-4) var(--space-6)';
+                tdTotal.style.fontSize = 'var(--font-size-table-cell)';
+                tdTotal.style.textAlign = 'right';
+                tr.appendChild(tdTotal);
+
+                tbody.appendChild(tr);
+              });
+
+              // Fila "VOTACIÓN TOTAL" al final (D1 exime a Concejos, pero Alcaldías SÍ tienen)
+              if (tfoot) {
+                tfoot.innerHTML = '';
+
+                const trTotal = document.createElement('tr');
+                trTotal.className = 'total-votacion';
+
+                const tdTotalCol1 = document.createElement('td');
+                tdTotalCol1.colSpan = 4;
+                tdTotalCol1.style.padding = 'var(--space-4) var(--space-6)';
+                tdTotalCol1.style.fontSize = 'var(--font-size-table-cell)';
+                tdTotalCol1.style.textAlign = 'right';
+                trTotal.appendChild(tdTotalCol1);
+
+                const tdTotalVal = document.createElement('td');
+                tdTotalVal.textContent = 'VOTACIÓN TOTAL: ' + totalVotacion.toLocaleString();
+                tdTotalVal.style.padding = 'var(--space-4) var(--space-6)';
+                tdTotalVal.style.fontWeight = 'bold';
+                tdTotalVal.style.color = 'var(--color-on-primary)';
+                tdTotalVal.style.fontSize = 'var(--font-size-table-cell)';
+                tdTotalVal.style.textAlign = 'right';
+                trTotal.appendChild(tdTotalVal);
+
+                tfoot.appendChild(trTotal);
+              }
+
+              // Fila "Potencial de sufragantes"
+              const filaPotencialHtml = `
+                <div id="fila-potencial-alcaldia" style="margin-top: var(--space-16); padding: var(--space-12); background: var(--color-superficie); border: 2px solid var(--color-borde); border-radius: var(--radius-md);">
+                  <span style="font-size: var(--font-size-sm); color: var(--color-texto-secundario);">Potencial de sufragantes: <span id="num-potencial-alcaldia">${potencialSufragantes.toLocaleString()}</span></span>
+                </div>
+              `;
+
+              // Insertar después de la tabla o en el lugar apropiado
+              const contenedor = document.querySelector('.contenedor-tabla-alcaldia');
+              if (contenedor) {
+                const existing = contenedor.querySelector('#fila-potencial-alcaldia');
+                if (existing) existing.innerHTML = `<span style="font-size: var(--font-size-sm); color: var(--color-texto-secundario);">Potencial de sufragantes: ${potencialSufragantes.toLocaleString()}</span>`;
+                else contenedor.insertAdjacentHTML('beforeend', filaPotencialHtml);
+              }
+
+              // Efecto hover en filas
+              setTimeout(() => {
+                const filas = tabla.querySelectorAll('tbody tr:not(.ganador)');
+                filas.forEach(fila => {
+                  fila.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = 'rgba(0, 212, 170, 0.08)';
+                  });
+                  fila.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '';
+                  });
+                });
+              }, 10);
+            }
+
+            /**
+             * Muestra los resultados de Concejo
+             * @param {object} datos - Datos del concejo
+             */
+            function mostrarConcejoResultados(datos) {
+              const tabla = document.getElementById('tabla-concejo');
+              const tbody = tabla.querySelector('tbody');
+              const mensajeVacio = document.getElementby-id('mensaje-vacio-concejo');
+              const filaPotencialConcejo = document.getElementById('fila-potencial-concejo');
+
+              if (!tabla || !tbody) return;
+
+              const listas = datos.listas;
+              const candidatosPorLista = datos.candidatosPorLista;
+              const votosPorLista = datos.votosPorLista;
+              const votosBlancos = datos.votosBlancos;
+              const votosNulos = datos.votosNulos;
+              const votosNoMarcados = datos.votosNoMarcados;
+              const potencialSufragantes = datos.potencialSufragantes;
+              const elegidosIndex = datos.elegidosIndex || [0];
+
+              // Según D1: Asambleas y Concejos NO tienen fila Total separada
+              // Según A2: Para Concejos con "Por la Lista": total = suma de votos de listas + blancos + nulos + no marcados
+              let totalVotacion = 0;
+              for (let i = 0; i < votosPorLista.length; i++) {
+                totalVotacion += votosPorLista[i];
+              }
+              totalVotacion += votosBlancos + votosNulos + votosNoMarcados;
+
+              // Determinar elegidos
+              const numListas = listas.length;
+              const esElegido = Array(numListas).fill(false);
+              elegidosIndex.forEach(idx => {
+                if (idx >= 0 && idx < esElegido.length) {
+                  esElegido[idx] = true;
+                }
+              });
+
+              // Limpiar tabla
+              tbody.innerHTML = '';
+
+              // Filas de listas/candidatos
+              listas.forEach((listaIdx, idx) => {
+                const esElegidoFila = esElegido[idx] || false;
+                const claseFila = esElegidoFila ? 'elegido' : '';
+                const nombreLista = listas[idx];
+                const votosLista = votosPorLista[idx] || 0;
+                const nombreCandidatos = candidatosPorLista[idx] ? candidatosPorLista[idx].join(', ') : '--';
+
+                const tr = document.createElement('tr');
+                tr.className = claseFila;
+                tr.style.transition = 'background-color 0.2s ease';
+
+                // Celda Part.
+                const tdPart = document.createElement('td');
+                tdPart.textContent = idx + 1;
+                tdPart.style.fontWeight = '600';
+                tdPart.style.padding = 'var(--space-4) var(--space-6)';
+                tdPart.style.fontSize = 'var(--font-size-table-cell)';
+                tr.appendChild(tdPart);
+
+                // Celda Listas: "Por la Lista" primero, luego candidatos
+                const tdLista = document.createElement('td');
+
+                let listaTexto;
+                if (idx === 0) {
+                  // Primera entrada: "Por la Lista" con sus candidatos
+                  listaTexto = "'" + nombreLista + "' - " + nombreCandidatos;
+                  tdLista.style.fontWeight = 'bold';
+                  tdLista.style.color = 'var(--color-acento)';
+                  tdLista.style.background = 'rgba(255, 171, 0, 0.1)';
+                  tdLista.style.paddingLeft = var(--space-4);
+                  tdLista.style.borderRadius = var(--radius-sm);
+                } else {
+                  listaTexto = nombreCandidatos;
+                }
+                tdLista.textContent = listaTexto;
+                tdLista.style.padding = 'var(--space-4) var(--space-6)';
+                tdLista.style.fontSize = 'var(--font-size-table-cell)';
+                tr.appendChild(tdLista);
+
+                // Celda Elegidos
+                const tdElegido = document.createElement('td');
+                tdElegido.textContent = esElegidoFila ? 'Sí' : 'No';
+                tdElegido.style.padding = 'var(--space-4) var(--space-6)';
+                tdElegido.style.fontSize = 'var(--font-size-table-cell)';
+                tdElegido.style.textAlign = 'center';
+                tr.appendChild(tdElegido);
+
+                // Celda Cierre RN-06
+                const tdCierre = document.createElement('td');
+                const cierreTexto = `Blanco: ${votosBlancos} | Nulo: ${votosNulos} | No marcado: ${votosNoMarcados}`;
+                tdCierre.innerHTML = cierreTexto;
+                tdCierre.style.padding = 'var(--space-4) var(--space-6)';
+                tdCierre.style.fontSize = 'var(--font-size-table-cell)';
+                tr.appendChild(tdCierre);
+
+                // D1: Sin columna VOTACIÓN TOTAL - no agregamos celda
+
+                tbody.appendChild(tr);
+              });
+
+              // Fila "Potencial de sufragantes" para Concejos
+              if (filaPotencialConcejo) {
+                filaPotencialConcejo.style.display = 'block';
+                const numPotencialEl = document.getElementById('num-potencial-concejo');
+                if (numPotencialEl) {
+                  numPotencialEl.textContent = potencialSufragantes.toLocaleString();
+                }
+              }
+
+              // Fila "VOTACIÓN TOTAL" NO se muestra en Concejos (D1)
+              const tfoot = tabla.closest('table').querySelector('tfoot');
+              if (tfoot) {
+                tfoot.style.display = 'none';
+              }
+
+              // Efecto hover en filas
+              setTimeout(() => {
+                const filas = tabla.querySelectorAll('tbody tr:not(.elegido)');
+                filas.forEach(fila => {
+                  fila.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = 'rgba(0, 212, 170, 0.08)';
+                  });
+                  fila.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '';
+                  });
+                });
+              }, 10);
+            }
+          </script>
+
+        </body>
+        </html>
+      `;
+    }
+  </script>
+
+</body>
+</html>
