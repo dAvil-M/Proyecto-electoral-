@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A2A43">
+  <meta name="description" content="Guía Electoral de Colombia - Portal principal de acceso a resultados electorales: Bienvenida, Menú, Gobernaciones y Asambleas, Alcaldías y Concejos.">
+  <title>Guía Electoral de Colombia | Portal Principal</title>
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    /* Estilos exclusivos del contenedor shell (index.html) sin alterar los archivos originales */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #061A2B;
+      color: #FFFFFF;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .shell-layout {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .shell-barra {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.55rem 1.25rem;
+      background-color: #061A2B;
+      border-bottom: 2px solid #00BCD4;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      z-index: 10;
+    }
+
+    .shell-marca {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      color: #FFFFFF;
+    }
+
+    .shell-badge {
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background-color: #FFEB3B;
+      color: #0A2A43;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .shell-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .shell-tab {
+      padding: 0.4rem 0.85rem;
+      border: 1px solid rgba(0, 188, 212, 0.45);
+      border-radius: 999px;
+      background-color: rgba(10, 42, 67, 0.85);
+      color: #CFE2F3;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .shell-tab:hover {
+      background-color: rgba(0, 188, 212, 0.2);
+      color: #FFFFFF;
+      border-color: #00BCD4;
+    }
+
+    .shell-tab.activa {
+      background-color: #00BCD4;
+      color: #062A36;
+      border-color: #00BCD4;
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(0, 188, 212, 0.4);
+    }
+
+    .shell-visor {
+      flex: 1 1 auto;
+      width: 100%;
+      border: none;
+      background-color: #0A2A43;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="shell-layout">
+    <nav class="shell-barra" aria-label="Navegación general de pantallas">
+      <div class="shell-marca">
+        <span>GE · Guía Electoral de Colombia</span>
+        <span class="shell-badge">Datos de ejemplo - no oficiales</span>
+      </div>
+
+      <div class="shell-nav" role="tablist">
+        <button type="button" class="shell-tab activa" data-vista="bienvenida.html" role="tab" aria-selected="true">
+          1. Bienvenida
+        </button>
+        <button type="button" class="shell-tab" data-vista="menú.html" role="tab" aria-selected="false">
+          2. Menú de Resultados
+        </button>
+        <button type="button" class="shell-tab" data-vista="gobernaciones_asambleas.html" role="tab" aria-selected="false">
+          3. Gobernaciones y Asambleas
+        </button>
+        <button type="button" class="shell-tab" data-vista="alcaldias_concejios.html" role="tab" aria-selected="false">
+          4. Alcaldías y Concejos
+        </button>
+      </div>
+    </nav>
+
+    <iframe id="visor-pantalla" class="shell-visor" src="bienvenida.html" title="Vista activa de la Guía Electoral de Colombia"></iframe>
+  </div>
+
+  <script>
+    (function () {
+      const visor = document.getElementById('visor-pantalla');
+      const botones = document.querySelectorAll('.shell-tab');
+
+      function activarPestana(ruta) {
+        botones.forEach(btn => {
+          const esActual = btn.dataset.vista === ruta;
+          btn.classList.toggle('activa', esActual);
+          btn.setAttribute('aria-selected', esActual ? 'true' : 'false');
+        });
+      }
+
+      botones.forEach(boton => {
+        boton.addEventListener('click', () => {
+          const destino = boton.dataset.vista;
+          visor.src = destino;
+          activarPestana(destino);
+        });
+      });
+
+      // Sincroniza la pestaña activa cuando navegas usando los botones internos de cada HTML
+      visor.addEventListener('load', () => {
+        try {
+          const rutaActual = visor.contentWindow.location.pathname;
+          const archivo = decodeURIComponent(rutaActual.split('/').pop());
+          if (archivo) {
+            activarPestana(archivo);
+          }
+        } catch (e) {
+          // Ignorar restricciones de origen en apertura local file://
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
